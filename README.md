@@ -5,3 +5,9 @@ This repository presents projects from the 42 courses of Malaga
 
 Projects
 Below are the different projects carried out...
+
+Piscine: 
+	-	Sell00
+	-	C-00
+	-	C-01
+	-	C-02
