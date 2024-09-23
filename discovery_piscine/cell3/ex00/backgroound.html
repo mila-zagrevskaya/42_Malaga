@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./backgroound.css">
+	<title>Cambiar el fondo</title>
+</head>
+<body>
+	<div class="container">
+		<header class="header">
+			<div class="logo">
+				<a class="logo-link" href="https://candidatura.42malaga.com/users/sign_in">
+					<img class="logo-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/42_Logo.svg/1200px-42_Logo.svg.png" alt="">
+				</a>
+			</div>
+			<h3>Discovery Piscine - Célula 3-0</h3>
+		</header>
+		<main class="main" id="main">
+			<div class="control-panel">
+				<button class="control-button" onclick=setBackground()>Cambiar el fondo</button>
+			</div>
+		</main>
+		<footer class="footer">
+			<div class="footer-content">
+				<img class="footer-logo" src="https://candidatura.42malaga.com/uploads/admissions/campus/logo_website/32/42Malaga-horiz-black__4_.svg" alt="">
+				<p>© lzahrevs 2024</p>
+			</div>
+		</footer>
+	</div>
+
+	<script>
+		const container = document.getElementById("main");
+		const button = document.querySelector(".control-button");
+
+		const getRandomColor =  () =>  {
+			return "#" + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0').toUpperCase();
+		}
+		
+		setBackground = () => {
+			container.style.background = getRandomColor();
+		}
+
+	</script>
+</body>
+</html>
