@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		*, *::before, *::after{
+			box-sizing: border-box; 
+		}
+
+		ul[role='list'], ol[role='list']{
+			list-style: none; 
+		}
+
+		html:focus-within{
+			scroll-behavior: smooth; 
+		}
+
+		a:not([class]){
+			text-decoration-skip-ink: auto; 
+		}
+
+		img, picture, svg, video, canvas{
+			max-width: 100%;
+			height: auto; 
+			vertical-align: middle; 
+			font-style: italic; 
+			background-repeat: no-repeat; 
+			background-size: cover;
+		}
+
+		input, button, textarea, select{
+			font: inherit; 
+		}
+
+		@media (prefers-reduced-motion: reduce){
+			html:focus-within {
+				scroll-behavior: auto;
+			}
+			*, *::before, *::after {
+				animation-duration: 0.01ms !important;
+				animation-iteration-count: 1 !important;
+				transition-duration: 0.01ms !important;
+				scroll-behavior: auto !important;
+				transition: none;
+			}
+		}
+
+		body, html{
+			height: 100%; 
+			scroll-behavior: smooth; 
+		}
+	</style>
+</head>
+<body>
+	<h1 style="text-align: center;">Piscine Web</h1>
+	<div style="margin-top: 45px;"></div>
+		<a href="https://www.youtube.com/watch?v=INscMGmhmX4">
+			<img src="https://file.forms.app/sitefile/55+Hilarious-developer-memes-that-will-leave-you-in-splits-18.jpg" alt="mem1">
+		</a>
+		<img src="https://i.imgflip.com/7wefqe.jpg" alt="mem2">
+	</div>
+</body>
+</html>

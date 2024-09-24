@@ -6,3 +6,9 @@ What is 42?
 
 Projects
 Below are the different projects carried out...
+
+Piscine: 
+	-	Sell00
+	-	C-00
+	-	C-01
+	-	C-02
