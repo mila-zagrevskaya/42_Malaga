@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Explotar este globo</title>
+</head>
+<style>
+	*, *::before, *::after{
+		box-sizing: border-box; 
+	}
+
+	ul[role='list'], ol[role='list']{
+		list-style: none; 
+	}
+
+	html:focus-within{
+		scroll-behavior: smooth; 
+	}
+
+	a:not([class]){
+		text-decoration-skip-ink: auto; 
+	}
+
+	img, picture, svg, video, canvas{
+		max-width: 100%;
+		height: auto; 
+		vertical-align: middle; 
+		font-style: italic; 
+		background-repeat: no-repeat; 
+		background-size: cover;
+	}
+
+	input, button, textarea, select{
+		font: inherit; 
+	}
+
+	@media (prefers-reduced-motion: reduce){
+		html:focus-within {
+			scroll-behavior: auto;
+		}
+		*, *::before, *::after {
+			animation-duration: 0.01ms !important;
+			animation-iteration-count: 1 !important;
+			transition-duration: 0.01ms !important;
+			scroll-behavior: auto !important;
+			transition: none;
+		}
+	}
+
+	body, html{
+		height: 100vh; 
+		scroll-behavior: smooth; 
+		margin: 0;
+	}
+
+	body {
+		font-family: sans-serif;
+		font-size: 18px;
+	}
+
+	.full-width {
+		width: 100%;
+	}
+
+	.container {
+		min-height: 100%;
+		display: flex;
+		flex-direction: column;
+		padding: 0 10px;
+	}
+
+	.header {
+		height: 90px;
+		padding: 15px 25px;
+		box-shadow: 0 2px 2px -2px #000;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		background: #fff;
+	}
+
+	.logo-img {
+		width: 65px;
+	}
+
+	.main {
+		flex: 1 1 auto;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 10px;
+	}
+
+	.footer {
+		color: #fff;
+		background: #fff;
+		text-align: center;
+		padding: 30px;
+		box-shadow: 0 -2px 2px -2px #000;
+	}
+
+	.footer-content {
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		color: #000;
+		font-size: 18px;
+	}
+
+	.footer-logo {
+		height: 50px;
+	}
+
+	.balloon {
+		width: 200px;
+		height: 200px;
+		border-radius: 50%;
+		background: #D73B3B;
+		transition: all .3s;
+		cursor: pointer;
+	}
+
+	.balloon.large {
+		width: 420px;
+		height: 420px;
+	}
+
+	.balloon.green {
+		background-color: green;
+	}
+
+	.balloon.blue {
+		background-color: blue;
+	}
+
+	.balloon-broked {
+		background-image: url(https://www.pngall.com/wp-content/uploads/8/Wall-Crack-PNG.png);
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center;
+	}
+
+</style>
+<body>
+	<div class="container">
+		<header class="header">
+			<div class="logo">
+				<a class="logo-link" href="https://candidatura.42malaga.com/users/sign_in">
+					<img class="logo-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/42_Logo.svg/1200px-42_Logo.svg.png" alt="">
+				</a>
+			</div>
+			<h3>Discovery Piscine - Célula 3-1</h3>
+		</header>
+		<main class="main" id="main">
+			<div class="balloon" id="balloon"></div>
+		</main>
+		<footer class="footer">
+			<div class="footer-content">
+				<img class="footer-logo" src="https://candidatura.42malaga.com/uploads/admissions/campus/logo_website/32/42Malaga-horiz-black__4_.svg" alt="">
+				<p>© lzahrevs 2024</p>
+			</div>
+		</footer>
+	</div>
+
+	<script>
+		const balloon = document.querySelector('.balloon');
+		let size = 200;
+		let color = 'red';
+
+		balloon.addEventListener('click', () => {
+			if (size === 415)
+				size += 5;
+			else size += 10;
+			if (size > 420) {
+				size = 200;
+			}
+			color = changeColor(color);
+
+			updateBalloon();
+		});
+
+		balloon.addEventListener('mouseout', () => {
+			size = Math.max(size - 5, 200);
+			color = changeColor(color, true);
+
+			updateBalloon();
+		});
+
+		function updateBalloon() {
+			balloon.style.width = size + 'px';
+			balloon.style.height = size + 'px';
+
+			if (size > 420) {
+				size = 200;
+				color = 'red';
+			}
+
+			balloon.classList.toggle('balloon-broked',  size >= 420);
+			balloon.classList.toggle('large', size > 420);
+			balloon.classList.toggle('green', color === 'green');
+			balloon.classList.toggle('blue', color === 'blue');
+			balloon.classList.toggle('red', size == 200);
+			console.log("size", size);
+		}
+
+		function changeColor(current, reverse = false, direction) {
+			const colors = ['red', 'green', 'blue'];
+			const currentIndex = colors.indexOf(current);
+
+			let newIndex = currentIndex + (reverse ? -1 : 1);
+			newIndex = (currentIndex + -1 + colors.length) % colors.length;
+			return colors[newIndex];
+		}
+	</script>
+</body>
+</html>
