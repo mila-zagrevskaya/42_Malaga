@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mila_zagrevskya <mila_zagrevskya@studen    +#+  +:+       +#+        */
+/*   By: lzahrevs <lzahrevs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 12:42:08 by mila_zagrev       #+#    #+#             */
-/*   Updated: 2024/10/20 20:59:45 by mila_zagrev      ###   ########.fr       */
+/*   Updated: 2024/10/23 13:50:51 by lzahrevs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 #include <stdio.h>
 #include <fcntl.h>
 
-char *ft_update_stack(char *stack)
+char	*ft_update_stack(char *stack)
 {
-	char 	*new_stack;
-	char 	*aux;
-	size_t i;
+	char	*new_stack;
+	char	*aux;
+	size_t	i;
 
 	i = 0;
 	new_stack = ft_strchr(stack, '\n');
@@ -40,10 +40,10 @@ char *ft_update_stack(char *stack)
 	return (aux);
 }
 
-char *ft_create_line(char *stack)
+char	*ft_create_line(char *stack)
 {
-	size_t pos;
-	char *line;
+	size_t	pos;
+	char	*line;
 
 	if (!stack || !*stack)
 		return (NULL);
@@ -52,7 +52,7 @@ char *ft_create_line(char *stack)
 		pos++;
 	if (stack[pos] == '\n')
 		pos++;
-	line = malloc((pos + 1) * sizeof(char));
+	line = malloc((pos + 1) * sizeof (char));
 	if (!line)
 		return (NULL);
 	pos = 0;
@@ -67,9 +67,9 @@ char *ft_create_line(char *stack)
 	return (line);
 }
 
-char *ft_join(char *str1, char *str2)
+char	*ft_join(char *str1, char *str2)
 {
-	char *aux;
+	char	*aux;
 
 	if (!str1)
 	{
@@ -83,12 +83,12 @@ char *ft_join(char *str1, char *str2)
 	return (aux);
 }
 
-char *get_next_line(int fd)
+char	*get_next_line(int fd)
 {
-	static char *stack[FD_MAX] = {NULL};
-	char 				*line;
-	char 				*tmp;
-	int 				read_bytes;
+	static char	*stack[FD_MAX] = {NULL};
+	char		*line;
+	char		*tmp;
+	int			read_bytes;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || fd > FD_MAX)
 		return (NULL);
@@ -113,7 +113,7 @@ char *get_next_line(int fd)
 int	main(int argc, char **argv)
 {
 	int		fd;
-	int	fd2;
+	int		fd2;
 	char	*str;
 	char	*str2;
 	int		i;
@@ -130,7 +130,6 @@ int	main(int argc, char **argv)
 	{
 		str = get_next_line(fd);
 		str2 = get_next_line(fd2);
-
 		if (!str || !str2)
 			return (1);
 		printf("t1: %s\n", str);

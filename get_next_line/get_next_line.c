@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mila_zagrevskya <mila_zagrevskya@studen    +#+  +:+       +#+        */
+/*   By: lzahrevs <lzahrevs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 12:42:08 by mila_zagrev       #+#    #+#             */
-/*   Updated: 2024/10/20 20:59:01 by mila_zagrev      ###   ########.fr       */
+/*   Updated: 2024/10/23 13:51:20 by lzahrevs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,15 @@
 Allocates space for new string AUX and copies the content of new_stack on it.
 frees old stack and returns updated stack (aux)*/
 
-char *ft_update_stack(char *stack)
+/*ft_update_stack busca "/n" en STACK usando ft_strch y asignando a new_stack
+Asigna espacio para la nueva linea AUX y copia el contenido de new_stack en ella.
+Libera el stack anterior y devuelve el stack actualizado (aux)*/
+
+char	*ft_update_stack(char *stack)
 {
-	char 		*new_stack;
-	char 		*aux;
-	size_t 	i;
+	char	*new_stack;
+	char	*aux;
+	size_t	i;
 
 	i = 0;
 	new_stack = ft_strchr(stack, '\n');
@@ -48,10 +52,14 @@ char *ft_update_stack(char *stack)
 for new line, copies characters from stack to new line, adds "\n" if necessary,
 frees stack, and returns new line*/
 
-char *ft_create_line(char *stack)
+/*ft_create_line toma la stack, busca "/n" o el final del archivo,
+asigna espacio para una nueva línea, copia caracteres del stack a una nueva
+línea, agrega "\n" si es necesario, libera el stack y devuelve una nueva línea*/
+
+char	*ft_create_line(char *stack)
 {
-	size_t 	pos;
-	char 		*line;
+	size_t	pos;
+	char	*line;
 
 	if (!stack || !*stack)
 		return (NULL);
@@ -60,7 +68,7 @@ char *ft_create_line(char *stack)
 		pos++;
 	if (stack[pos] == '\n')
 		pos++;
-	line = malloc((pos + 1) * sizeof(char));
+	line = malloc((pos + 1) * sizeof (char));
 	if (!line)
 		return (NULL);
 	pos = 0;
@@ -77,9 +85,13 @@ char *ft_create_line(char *stack)
 
 /*ft_join appends bytes stored in TMP to STACK using ft_strjoin.
 If STACK is not yet created, it initializes it*/
-char *ft_join(char *str1, char *str2)
+
+/*ft_join agrega bytes almacenados en TMP a STACK usando ft_strjoin.
+Si STACK aún no se creó, lo inicializa*/
+
+char	*ft_join(char *str1, char *str2)
 {
-	char *aux;
+	char	*aux;
 
 	if (!str1)
 	{
@@ -100,12 +112,20 @@ and buils STACK calling FT_JOIN until "\n" or end of file is reached.
 Returned LINE is created by FT_CREATE_LINE
 STACK is updated by FT_UPDATE_STACK and ready for next call*/
 
-char *get_next_line(int fd)
+/*La función get_next_line declara STACK como un array estático para almacenar
+el texto que se ha leído en las llamadas de función.
+La función lee desde el descriptor de archivo en fragmentos de bytes BUFFER_SIZE
+y construye STACK llamando a FT_JOIN hasta que se alcanza "\n"
+o el final del archivo.
+FT_CREATE_LINE crea la línea LINE devuelta
+FT_UPDATE_STACK actualiza STACK y está lista para la siguiente llamada*/
+
+char	*get_next_line(int fd)
 {
-	static char *stack = NULL;
-	char 				*line;
-	char 				*tmp;
-	int 				read_bytes;
+	static char	*stack = NULL;
+	char		*line;
+	char		*tmp;
+	int			read_bytes;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
