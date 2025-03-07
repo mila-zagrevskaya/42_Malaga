@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   mlx_destroy_display.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lzahrevs <lzahrevs@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/13 15:02:04 by lzahrevs          #+#    #+#             */
-/*   Updated: 2024/06/26 19:09:07 by lzahrevs         ###   ########.fr       */
+/*   Created: 2020/10/03 18:56:35 by mg                #+#    #+#             */
+/*   Updated: 2020/10/04 01:55:35 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "mlx_int.h"
 
-/**
- * @brief *%c Prints a single character
- * 
- * @param chr 
- * @return int 
- */
-int	ft_putchar(int chr)
+int	mlx_destroy_display(t_xvar *xvar)
 {
-	return (write(1, &chr, 1));
+	XCloseDisplay(xvar->display);
 }
